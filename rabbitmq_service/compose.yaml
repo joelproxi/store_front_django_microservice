@@ -1,0 +1,26 @@
+
+services:
+  rabbitmq-service:
+    image: rabbitmq:4-management
+    container_name: rabbitmq-service
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    env_file:
+      - .env.dev
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+    networks:
+      - store_front_network
+    restart: unless-stopped
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+networks:
+  store_front_network:
+    external: true
+    
+volumes:
+  rabbitmq_data:
+    driver: local

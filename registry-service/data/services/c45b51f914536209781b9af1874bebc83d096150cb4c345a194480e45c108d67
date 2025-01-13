@@ -1,0 +1,1 @@
+{"Token":"","Service":{"ID":"product-ms - 9d94080bb6aa","Service":"product-ms","Tags":null,"Address":"9d94080bb6aa","Meta":null,"Port":9500,"Weights":{"Passing":1,"Warning":1},"EnableTagOverride":false,"Proxy":{"Mode":"","MeshGateway":{},"Expose":{}},"Connect":{},"PeerName":"","CreateIndex":0,"ModifyIndex":0},"Source":"remote"}

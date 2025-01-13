@@ -1,0 +1,24 @@
+services:
+  traekik:
+    image: traefik:v2.10
+    container_name: traekik
+    ports:
+      - "8080:8080"
+      - "443:443"
+      - "80:80"
+    command: 
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.consul.endpoints=consul:8500"
+      - "--providers.consul.rootKey=traefik"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - store_front_network
+
+networks:
+  store_front_network:
+    external: true
